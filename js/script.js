@@ -43,7 +43,13 @@ function addMovie(movieName){
 
         //avvio funzione printMovie ad ogni risultato della chiamata ajax
         for (var i = 0; i < risultati.length; i++){
+          var cover = "";
+          if (risultati[i].poster_path != null){
+            cover = "https://image.tmdb.org/t/p/w1280" + risultati[i].poster_path;
+          };
+
           var movie = {
+            cover: cover,
             title: risultati[i].title,
             original_title: risultati[i].original_title,
             language: risultati[i].original_language,

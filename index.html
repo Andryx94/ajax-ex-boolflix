@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="it" dir="ltr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Modello</title>
+    <title>Boolflix</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
@@ -25,12 +25,13 @@
 
     <!-- template Handlebars -->
     <script id="movie-template" type="text/x-handlebars-template">
-      <div class="entry">
-        <h4>{{title}}</h4>
-        <div class="body">
+      <div class="movie">
+        <img class="movie_cover" src="{{cover}}" alt="">
+        <h4 class="movie_title">{{title}}</h4>
+        <div class="movie_movie-body">
           <p>Titolo originale: {{original_title}}</p>
           <p>Lingua: {{language}}</p>
-          <p>Voto: {{rating}}</p>
+          <p class="movie_movie-body_rating">Voto: {{rating}}</p>
         </div>
       </div>
     </script>

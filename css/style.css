@@ -10,4 +10,17 @@ body {
   border: 1px solid black;
   margin: 5px 0;
 }
+
+.movie-list img {
+  padding-top: 10px;
+  width: 150px;
+}
+
+.movie_title {
+  font-weight: 600;
+}
+
+.movie_movie-body_rating {
+  font-weight: 600;
+}
 /* fine container film */
