@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Modello</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:200,600,400,800" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.js"></script>
+  </head>
+  <body>
+
+    <!-- Container film -->
+    <div class="container text-center">
+      <input class="search-input" type="text" name="" value="" placeholder="Inserisci titolo film"> <button class="search" type="button" name="button">Cerca</button>
+
+      <!-- lista film -->
+      <div class="movie-list">
+      </div>
+    </div>
+    <!-- fine container film -->
+
+    <!-- template Handlebars -->
+    <script id="movie-template" type="text/x-handlebars-template">
+      <div class="entry">
+        <h4>{{title}}</h4>
+        <div class="body">
+          <p>Titolo originale: {{original_title}}</p>
+          <p>Lingua: {{language}}</p>
+          <p>Voto: {{rating}}</p>
+        </div>
+      </div>
+    </script>
+    <!-- fine template Handlebars -->
+
+    <!-- script JS -->
+    <script src="js/script.js"></script>
+    <!-- fine script JS -->
+  </body>
+</html>
