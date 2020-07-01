@@ -3,10 +3,25 @@ $(document).ready(
     //avvio funzione al click del tasto ricerca
     $(".search").click(function(){
       var ricercaUtente = $(".search-input").val();
+
       // se input ricerca non è vuoto
       if (ricercaUtente != ""){
         $(".container .movie-list").text("");
         addMovie(ricercaUtente);
+      }
+    });
+
+    //avvio funzione a pressione tasto invio
+    $(".search-input").keyup(function() {
+      //se viene premuto il tasto invio (13)
+      if ( event.which == 13 ) {
+        var ricercaUtente = $(".search-input").val();
+
+        // se input ricerca non è vuoto
+        if (ricercaUtente != ""){
+          $(".container .movie-list").text("");
+          addMovie(ricercaUtente);
+        }
       }
     });
   }
@@ -54,5 +69,4 @@ function printMovie(movie){
   //appendo il template nel movie-list
   var html = template(movie);
   $(".container .movie-list").append(html);
-
 }
