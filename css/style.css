@@ -11,9 +11,9 @@ body {
   margin: 5px 0;
 }
 
-.movie-list img {
+.movie-list .movie_cover {
   padding-top: 10px;
-  width: 150px;
+  width: 200px;
 }
 
 .movie_title {

@@ -15,7 +15,8 @@
 
     <!-- Container film -->
     <div class="container text-center">
-      <input class="search-input" type="text" name="" value="" placeholder="Inserisci titolo film"> <button class="search" type="button" name="button">Cerca</button>
+      <input class="search-input" type="text" name="" value="" placeholder="Inserisci titolo">
+      <button class="search" type="button" name="button">Cerca</button>
 
       <!-- lista film -->
       <div class="movie-list">
@@ -30,8 +31,8 @@
         <h4 class="movie_title">{{title}}</h4>
         <div class="movie_movie-body">
           <p>Titolo originale: {{original_title}}</p>
-          <p>Lingua: {{language}}</p>
-          <p class="movie_movie-body_rating">Voto: {{rating}}</p>
+          <p>Lingua: <img src="img/{{language}}.png" alt="&nbsp; {{language}}"></p>
+          <p class="movie_movie-body_rating">{{{rating}}}</p>
         </div>
       </div>
     </script>
