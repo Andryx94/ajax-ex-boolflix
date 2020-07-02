@@ -15,8 +15,10 @@
 
     <!-- Container film -->
     <div class="container text-center">
-      <input class="search-input" type="text" name="" value="" placeholder="Inserisci titolo">
-      <button class="search" type="button" name="button">Cerca</button>
+      <div class="search">
+        <input class="search-input" type="text" name="" value="" placeholder="Inserisci titolo">
+        <button class="search-button" type="button" name="button">Cerca</button>
+      </div>
 
       <!-- lista film -->
       <div class="movie-list">
@@ -27,12 +29,14 @@
     <!-- template Handlebars -->
     <script id="movie-template" type="text/x-handlebars-template">
       <div class="movie">
-        <img class="movie_cover" src="{{cover}}" alt="">
-        <h4 class="movie_title">{{title}}</h4>
-        <div class="movie_movie-body">
-          <p>Titolo originale: {{original_title}}</p>
-          <p>Lingua: <img src="img/{{language}}.png" alt="&nbsp; {{language}}"></p>
-          <p class="movie_movie-body_rating">{{{rating}}}</p>
+        <img class="movie-cover" src="{{cover}}" alt="">
+        <h4 class="movie-title">{{title}}</h4>
+        <div class="movie-body">
+          <ul>
+            <li><p>{{original_title}}</p></li>
+            <li><p><img src="img/{{language}}.png" alt="&nbsp; {{language}}"></p></li>
+            <li><p class="movie-rating">{{{rating}}}</p></li>
+          </ul>
         </div>
       </div>
     </script>

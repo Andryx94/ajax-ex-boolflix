@@ -1,7 +1,7 @@
 $(document).ready(
   function() {
     //avvio funzione al click del tasto ricerca
-    $(".search").click(function(){
+    $(".search-button").click(function(){
       boolflix();
     });
 
