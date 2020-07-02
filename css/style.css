@@ -6,8 +6,12 @@ body {
 /* fine generali */
 
 /* Container film */
+.movie-list{
+  display: flex;
+  flex-wrap: wrap;
+}
 .movie-list > div {
-  border: 1px solid black;
+  width: calc(100%/5);
   margin: 5px 0;
 }
 
