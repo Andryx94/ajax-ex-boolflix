@@ -27,16 +27,48 @@ input:focus{
 }
 /* fine generali */
 
-/* Header */
+/* HEADER */
 .header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   height: 50px;
+  padding: 0 70px;
   background-color: rgba(0,0,0)
 }
 
-/* Container film */
+.logo:hover {
+  cursor: pointer;
+}
+
+.search-icon {
+  font-size: 18px;
+  color: white
+}
+
+
+.search-input {
+  background-color: black;
+  width: 170px;
+  border: 0;
+  padding-left: 20px;
+  color: white;
+  font-weight: 600;
+}
+
+.search-input::placeholder {
+  color: rgba(255,255,255,0.4);
+}
+
+.search-button {
+  border-radius: 10px;
+  border: 0;
+  font-weight: 600;
+}
+/* fine header */
+
+/* MAIN */
+/* Movie list*/
 .movie {
   position: relative;
   color: white;
@@ -56,10 +88,6 @@ input:focus{
   width: 100%;
   height: 100%;
   border: 2px solid white;
-}
-
-.movie:hover {
-  cursor: pointer;
 }
 
 .movie:hover .movie-cover {
@@ -94,4 +122,17 @@ input:focus{
   max-height: 300px;
   overflow: auto;
 }
-/* fine container film */
+/* fine main */
+
+/* versione mobile */
+@media all and (max-width: 767px) {
+  .search-input {
+    width: 130px;
+    padding-left: 10px;
+  }
+
+  .search-button {
+    display: none;
+  }
+}
+/* fine versione mobile */

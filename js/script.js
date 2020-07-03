@@ -1,24 +1,38 @@
 $(document).ready(
   function() {
+    var ricercaUtentePlaceholder = "Dark";
+    boolflix(ricercaUtentePlaceholder);
+
     //avvio funzione al click del tasto ricerca
     $(".search-button").click(function(){
-      boolflix();
+      var ricercaUtente = $(".search-input").val();
+      boolflix(ricercaUtente);
     });
 
     //avvio funzione a pressione tasto invio
     $(".search-input").keyup(function() {
       //se viene premuto il tasto invio (13)
       if ( event.which == 13 ) {
-        boolflix();
+        var ricercaUtente = $(".search-input").val();
+        boolflix(ricercaUtente);
       }
+    });
+
+    //avvio funzione a click su logo Boolflix
+    $(".logo").click(function(){
+      location.reload();
+    });
+
+    $(".search-icon").click(function(){
+      $(".search-input").toggleClass("hide");
+      $(".search-input").val("");
+      $(".search-button").toggleClass("hide");
     });
   }
 );
 
 //FUNZIONE Boolflix
-function boolflix(){
-  var ricercaUtente = $(".search-input").val();
-
+function boolflix(ricercaUtente){
   // se input ricerca non è vuoto
   if (ricercaUtente != ""){
     $(".mycontainer .movie-list").text("");
