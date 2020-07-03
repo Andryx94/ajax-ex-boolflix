@@ -1,20 +1,20 @@
 $(document).ready(
   function() {
-    var ricercaUtentePlaceholder = "Dark";
-    boolflix(ricercaUtentePlaceholder);
+    var userResearchPlaceholder = "Dark";
+    boolflix(userResearchPlaceholder);
 
     //avvio funzione al click del tasto ricerca
     $(".search-button").click(function(){
-      var ricercaUtente = $(".search-input").val();
-      boolflix(ricercaUtente);
+      var userResearch = $(".search-input").val();
+      boolflix(userResearch);
     });
 
     //avvio funzione a pressione tasto invio
     $(".search-input").keyup(function() {
       //se viene premuto il tasto invio (13)
       if ( event.which == 13 ) {
-        var ricercaUtente = $(".search-input").val();
-        boolflix(ricercaUtente);
+        var userResearch = $(".search-input").val();
+        boolflix(userResearch);
       }
     });
 
@@ -23,6 +23,7 @@ $(document).ready(
       location.reload();
     });
 
+    //avvio funzione a click su icona lente d'ingradimento
     $(".search-icon").click(function(){
       $(".search-input").toggleClass("hide");
       $(".search-input").val("");
@@ -32,12 +33,12 @@ $(document).ready(
 );
 
 //FUNZIONE Boolflix
-function boolflix(ricercaUtente){
+function boolflix(userResearch){
   // se input ricerca non è vuoto
-  if (ricercaUtente != ""){
+  if (userResearch != ""){
     $(".mycontainer .movie-list").text("");
-    addMovieTv(ricercaUtente, "https://api.themoviedb.org/3/search/movie"); //ricerca film
-    addMovieTv(ricercaUtente, "https://api.themoviedb.org/3/search/tv"); //ricerca serie tv
+    addMovieTv(userResearch, "https://api.themoviedb.org/3/search/movie"); //ricerca film
+    addMovieTv(userResearch, "https://api.themoviedb.org/3/search/tv"); //ricerca serie tv
   }
 }
 
@@ -53,17 +54,17 @@ function addMovieTv(name, url){
         query: name,
       },
       success: function (data) {
-        var risultati = data.results;
+        var results = data.results;
 
         //avvio funzione print ad ogni risultato della chiamata ajax
-        for (var i = 0; i < risultati.length; i++){
+        for (var i = 0; i < results.length; i++){
           printData(
-            risultati[i].poster_path,
-            risultati[i].title || risultati[i].name, //FILM: "title" - SERIE TV: "name"
-            risultati[i].original_title || risultati[i].original_name, //FILM: "original_title" - SERIE TV: "original_name"
-            risultati[i].original_language,
-            risultati[i].vote_average,
-            risultati[i].overview
+            results[i].poster_path,
+            results[i].title || results[i].name, //FILM: "title" - SERIE TV: "name"
+            results[i].original_title || results[i].original_name, //FILM: "original_title" - SERIE TV: "original_name"
+            results[i].original_language,
+            results[i].vote_average,
+            results[i].overview
           );
         }
       },
@@ -75,7 +76,7 @@ function addMovieTv(name, url){
 }
 
 //FUNZIONE stampa film
-function printData(poster, titolo, titolo_originale, lingua, voto, overview){
+function printData(poster, title, original_title, language, rating, overview){
   //inizializzo Handlebars con il template
   var source = $("#movie-template").html();
   var template = Handlebars.compile(source);
@@ -90,12 +91,12 @@ function printData(poster, titolo, titolo_originale, lingua, voto, overview){
   }
 
   //gestione stelle
-  var voto5 = Math.ceil(voto / 2)
+  var rating5 = Math.ceil(rating / 2)
   var star = [];
   var i = 0;
 
   for (var i = 0; i < 5; i++){
-    if (i < voto5){
+    if (i < rating5){
       star += '<i class="fas fa-star"></i>';
     }
     else {
@@ -104,16 +105,16 @@ function printData(poster, titolo, titolo_originale, lingua, voto, overview){
   }
 
   //dati oggetto Handlebars
-  var dati = {
+  var data = {
     cover: cover,
-    title: titolo,
-    original_title: titolo_originale,
-    language: lingua,
+    title: title,
+    original_title: original_title,
+    language: language,
     rating: star,
     overview: overview
   };
 
   //appendo il template nel movie-list
-  var html = template(dati);
-  $(".mycontainer .movie-list").append(html);
+  var html = template(data);
+  $(".movie-list").append(html);
 }
