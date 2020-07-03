@@ -13,29 +13,41 @@
   </head>
   <body>
 
-    <!-- Container film -->
-    <div class="container text-center">
-      <div class="search">
-        <input class="search-input" type="text" name="" value="" placeholder="Inserisci titolo">
-        <button class="search-button" type="button" name="button">Cerca</button>
+    <!-- mycontainer film -->
+    <div class="mycontainer">
+      <!-- Header -->
+      <div class="header">
+        <div class="logo">
+          <h1>Boolflix</h1>
+        </div>
+
+        <div class="search">
+          <input class="search-input" type="text" name="" value="" placeholder="Inserisci titolo">
+          <button class="search-button" type="button" name="button">Cerca</button>
+        </div>
       </div>
+      <!-- fine header -->
+
 
       <!-- lista film -->
-      <div class="movie-list">
+      <div class="movie-list text-center">
       </div>
+      <!-- fine lista film -->
     </div>
-    <!-- fine container film -->
+    <!-- fine mycontainer film -->
 
     <!-- template Handlebars -->
     <script id="movie-template" type="text/x-handlebars-template">
       <div class="movie">
         <img class="movie-cover" src="{{cover}}" alt="">
-        <h4 class="movie-title">{{title}}</h4>
+
         <div class="movie-body">
           <ul>
+            <li><h4 class="movie-title">{{title}}</h4></li>
             <li><p>{{original_title}}</p></li>
             <li><p><img src="img/{{language}}.png" alt="&nbsp; {{language}}"></p></li>
             <li><p class="movie-rating">{{{rating}}}</p></li>
+            <li><p class="overview">{{{overview}}}</p></li>
           </ul>
         </div>
       </div>
