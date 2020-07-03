@@ -43,7 +43,7 @@ function addMovieTv(name, url){
 
         //avvio funzione print ad ogni risultato della chiamata ajax
         for (var i = 0; i < risultati.length; i++){
-          var movie = dati(
+          printData(
             risultati[i].poster_path,
             risultati[i].title || risultati[i].name, //FILM: "title" - SERIE TV: "name"
             risultati[i].original_title || risultati[i].original_name, //FILM: "original_title" - SERIE TV: "original_name"
@@ -51,8 +51,6 @@ function addMovieTv(name, url){
             risultati[i].vote_average,
             risultati[i].overview
           );
-
-          print(movie);
         }
       },
       error: function () {
@@ -62,8 +60,12 @@ function addMovieTv(name, url){
   );
 }
 
-//FUNZIONE riempimento dati
-function dati(poster, titolo, titolo_originale, lingua, voto, overview){
+//FUNZIONE stampa film
+function printData(poster, titolo, titolo_originale, lingua, voto, overview){
+  //inizializzo Handlebars con il template
+  var source = $("#movie-template").html();
+  var template = Handlebars.compile(source);
+
   //gestione cover
   var cover = "";
   if (poster == null){
@@ -87,6 +89,7 @@ function dati(poster, titolo, titolo_originale, lingua, voto, overview){
     }
   }
 
+  //dati oggetto Handlebars
   var dati = {
     cover: cover,
     title: titolo,
@@ -95,16 +98,8 @@ function dati(poster, titolo, titolo_originale, lingua, voto, overview){
     rating: star,
     overview: overview
   };
-  return dati
-}
-
-//FUNZIONE stampa film
-function print(title){
-  //inizializzo Handlebars con il template
-  var source = $("#movie-template").html();
-  var template = Handlebars.compile(source);
 
   //appendo il template nel movie-list
-  var html = template(title);
+  var html = template(dati);
   $(".mycontainer .movie-list").append(html);
 }
