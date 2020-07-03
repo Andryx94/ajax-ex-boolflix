@@ -22,7 +22,7 @@ i {
   color: rgb(255, 238, 0);
 }
 
-input:focus{
+input:focus, button:focus {
   outline: 0;
 }
 /* fine generali */
@@ -33,11 +33,11 @@ input:focus{
   justify-content: space-between;
   align-items: center;
   height: 50px;
-  padding: 0 70px;
+  padding: 0 50px;
   background-color: rgba(0,0,0)
 }
 
-.logo:hover {
+.logo:hover, .search-icon:hover {
   cursor: pointer;
 }
 
@@ -45,7 +45,6 @@ input:focus{
   font-size: 18px;
   color: white
 }
-
 
 .search-input {
   background-color: black;
@@ -79,6 +78,7 @@ input:focus{
   justify-content: center;
   flex-wrap: wrap;
 }
+
 .movie-list > div {
   height: 513px;
   padding: 5px 10px;

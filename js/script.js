@@ -1,6 +1,6 @@
 $(document).ready(
   function() {
-    var userResearchPlaceholder = "Dark";
+    var userResearchPlaceholder = "Star Wars";
     boolflix(userResearchPlaceholder);
 
     //avvio funzione al click del tasto ricerca
