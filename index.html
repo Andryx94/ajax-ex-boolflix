@@ -29,6 +29,11 @@
       </div>
       <!-- fine header -->
 
+      <div class="numbers">
+        <p>Movies (<span id="movie-number"></span>)</p>
+        <p>TV Series (<span id="tv-number"></span>)</p>
+      </div>
+
       <!-- lista film -->
       <div class="movie-list text-center">
       </div>
@@ -38,7 +43,7 @@
 
     <!-- template Handlebars -->
     <script id="movie-template" type="text/x-handlebars-template">
-      <div class="movie">
+      <div class="movie {{coverNull}}">
         <img class="movie-cover" src="{{cover}}" alt="">
 
         <div class="movie-body">

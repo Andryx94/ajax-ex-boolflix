@@ -37,13 +37,23 @@ function boolflix(userResearch){
   // se input ricerca non è vuoto
   if (userResearch != ""){
     $(".mycontainer .movie-list").text("");
-    addMovieTv(userResearch, "https://api.themoviedb.org/3/search/movie"); //ricerca film
-    addMovieTv(userResearch, "https://api.themoviedb.org/3/search/tv"); //ricerca serie tv
+    addMovieTv(userResearch, "movie"); //ricerca film
+    addMovieTv(userResearch, "tv"); //ricerca serie tv
   }
 }
 
 //FUNZIONE aggiunta film o Serie TV
-function addMovieTv(name, url){
+function addMovieTv(name, category){
+  //analizzo se è un film o una serie tv e cambio le variabili
+  if (category == "movie") {
+    var url = "https://api.themoviedb.org/3/search/movie";
+  }
+
+  else {
+    var url = "https://api.themoviedb.org/3/search/tv";
+  }
+
+  //chiamata AJAX
   $.ajax(
     {
       url: url,
@@ -67,6 +77,15 @@ function addMovieTv(name, url){
             results[i].overview
           );
         }
+
+        //stampo il numero di film/serie della ricerca
+        if (category == "movie"){
+          $("#movie-number").text(results.length);
+        }
+
+        else {
+          $("#tv-number").text(results.length)
+        }
       },
       error: function () {
         alert("E' avvenuto un errore. ");
@@ -84,7 +103,8 @@ function printData(poster, title, original_title, language, rating, overview){
   //gestione cover
   var cover = "";
   if (poster == null){
-    cover = "img/covernull.jpg"
+    cover = "img/covernull.jpg";
+    var coverNull = "null";
   }
   else {
     cover = "https://image.tmdb.org/t/p/w342" + poster;
@@ -107,6 +127,7 @@ function printData(poster, title, original_title, language, rating, overview){
   //dati oggetto Handlebars
   var data = {
     cover: cover,
+    coverNull: coverNull,
     title: title,
     original_title: original_title,
     language: language,
