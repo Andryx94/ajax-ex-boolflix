@@ -1,6 +1,6 @@
 $(document).ready(
   function() {
-    var userResearchPlaceholder = "Star Wars";
+    var userResearchPlaceholder = "Harry Potter";
     boolflix(userResearchPlaceholder);
 
     //avvio funzione al click del tasto ricerca
@@ -68,13 +68,15 @@ function addMovieTv(name, category){
 
         //avvio funzione print ad ogni risultato della chiamata ajax
         for (var i = 0; i < results.length; i++){
+          // var genre = printGenre(category, results[i].genre_ids);
+
           printData(
             results[i].poster_path,
             results[i].title || results[i].name, //FILM: "title" - SERIE TV: "name"
             results[i].original_title || results[i].original_name, //FILM: "original_title" - SERIE TV: "original_name"
             results[i].original_language,
             results[i].vote_average,
-            results[i].overview
+            results[i].overview,
           );
         }
 
@@ -132,10 +134,55 @@ function printData(poster, title, original_title, language, rating, overview){
     original_title: original_title,
     language: language,
     rating: star,
-    overview: overview
+    overview: overview,
   };
 
   //appendo il template nel movie-list
   var html = template(data);
   $(".movie-list").append(html);
+}
+
+
+//FUNZIONE stampa genere
+function printGenre(category, genreId){
+  //chiamata AJAX
+  $.ajax(
+    {
+      url: 'https://api.themoviedb.org/3/genre/' + category + '/list',
+      method: "GET",
+      data: {
+        api_key: "65ed57e84173ef501a3f48cc27087d06",
+        language: "it-IT",
+        // append_to_response: "credits",
+      },
+      success: function (data) {
+        var genre = data.genres;
+        var genreArray = [];
+
+        for (var j = 0; j < genreId.length; j++){
+          for (var i = 0; i < genre.length; i++){
+            if (genre[i].id == genreId[j]){
+              genreArray.push(genre[i].name);
+            }
+          }
+        }
+
+        //inizializzo Handlebars genre con il template
+        var source = $("#movie-template-genre").html();
+        var template = Handlebars.compile(source);
+
+        //dati oggetto Handlebars
+        var data = {
+          genre: genreArray,
+        };
+
+        //appendo il template nel movie-list
+        var html = template(data);
+        $(".genre").html(html);
+      },
+      error: function () {
+        alert("E' avvenuto un errore. ");
+      }
+    }
+  );
 }

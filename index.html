@@ -51,6 +51,7 @@
             <li><h4 class="movie-title">{{title}}</h4></li>
             <li><p>{{original_title}}</p></li>
             <li><p><img src="img/{{language}}.png" alt="&nbsp; {{language}}"></p></li>
+            <!-- <li><p class="genre"></p></li> -->
             <li><p class="movie-rating">{{{rating}}}</p></li>
             <li><p class="overview">{{{overview}}}</p></li>
           </ul>
@@ -58,6 +59,16 @@
       </div>
     </script>
     <!-- fine template Handlebars -->
+
+    <!-- template Handlebars genre-->
+    <!-- <script id="movie-template-genre" type="text/x-handlebars-template">
+      <ul class="genre-list">
+        {{#each genre}}
+          <li>{{this}}</li>
+        {{/each}}
+      </ul>
+    </script> -->
+    <!-- fine template Handlebars genre -->
 
     <!-- script JS -->
     <script src="js/script.js"></script>
